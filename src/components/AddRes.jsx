@@ -10,13 +10,17 @@ const AddRes = () => {
         setRes([...res, inputText]);
         setInputText("");
     }
-
+    function enterPressed(e) {
+        if (e.code === 'Enter') {
+            addResulation();
+        }
+    };
     return (
         <>
             <div className="inputContainer">
                 <input type="text" className='input-box' placeholder='Enter year resulations...'
                     value={inputText}
-                    onChange={e => { setInputText(e.target.value) }} />
+                    onChange={e => { setInputText(e.target.value) }} onKeyDown={enterPressed} />
                 <button className='add-btn' onClick={addResulation}>+</button>
             </div>
             <Card resulations={res} />
